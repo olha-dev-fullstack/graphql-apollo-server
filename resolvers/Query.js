@@ -1,11 +1,11 @@
 exports.Query = {
-  products: (parent, { filter }, { products, reviews }) => {
-    let filteredProducts = products;
+  products: (parent, { filter }, { db }) => {
+    let filteredProducts = db.products;
     if (filter) {
       const { onSale, avgRating } = filter;
       if (onSale) {
-        filteredProducts = filteredProducts.filter((products) => {
-          return products.onSale;
+        filteredProducts = filteredProducts.filter((product) => {
+          return product.onSale;
         });
       }
       if ([1, 2, 3, 4, 5].includes(avgRating)) {
@@ -25,12 +25,12 @@ exports.Query = {
     }
     return filteredProducts;
   },
-  product: (parent, { id }, { products }) => {
-    return products.find((el) => el.id === id);
+  product: (parent, { id }, { db }) => {
+    return db.products.find((el) => el.id === id);
   },
-  categories: (parent, args, { categories }) => categories,
-  category: (parent, { id }, { categories }) => {
-    return categories.find((el) => (el.id = id));
+  categories: (parent, args, { db }) => db.categories,
+  category: (parent, { id }, { db }) => {
+    return db.categories.find((el) => (el.id = id));
   },
-  reviews: (parent, args, { reviews }) => reviews,
+  reviews: (parent, args, { db }) => db.reviews,
 };

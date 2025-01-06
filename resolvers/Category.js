@@ -1,6 +1,6 @@
 exports.Category = {
-  products: ({ id: categoryId }, { filter }, { products }) => {
-    let filteredCategoryProducts = products.filter(
+  products: ({ id: categoryId }, { filter }, { db }) => {
+    let filteredCategoryProducts = db.products.filter(
       (product) => product.categoryId === categoryId
     );
     if (filter) {
