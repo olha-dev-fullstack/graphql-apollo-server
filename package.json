@@ -1,10 +1,14 @@
 {
-  "name": "e-commerce-app",
+  "name": "graphql-apollo-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon --exec node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "olha-dev-fullstack:olha-dev-fullstack/graphql-apollo-server.git"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +16,10 @@
   "description": "",
   "dependencies": {
     "apollo-server": "^3.13.0",
-    "graphql": "^16.10.0",
-    "uuid": "^11.0.4"
+    "graphql": "^16.10.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
   }
 }
