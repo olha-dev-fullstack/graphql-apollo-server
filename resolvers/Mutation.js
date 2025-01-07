@@ -25,7 +25,7 @@ exports.Mutation = {
       quantity,
       categoryId,
     };
-    
+
     db.products.push(newProduct);
 
     return newProduct;
