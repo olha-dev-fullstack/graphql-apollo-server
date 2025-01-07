@@ -29,13 +29,14 @@ interface UserPayload {
   token: string | null;
 }
 
+const JSON_SIGNATURE = process.env.JWT_SIGNATURE;
+
 export const authResolvers = {
   signup: async (
     _: any,
     { credentials, name, bio }: SignupArgs,
     { prisma }: Context
   ): Promise<UserPayload> => {
-    const JSON_SIGNATURE = process.env.JWT_SIGNATURE;
     const { email, password } = credentials;
 
     const isEmail = validator.isEmail(email);
