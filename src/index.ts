@@ -1,16 +1,22 @@
 import { ApolloServer, gql } from "apollo-server";
-import { Query } from "./resolvers";
+import { Mutation, Query } from "./resolvers";
+import { typeDefs } from "./schema";
+import { Prisma, PrismaClient } from "@prisma/client";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 
-const typeDefs = gql`
-  type Query {
-    hello: String!
-  }
-`;
+const prisma = new PrismaClient();
 
+export interface Context {
+    prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>
+}
 const server = new ApolloServer({
   typeDefs,
   resolvers: {
-    Query
+    Query,
+    Mutation
+  },
+  context: {
+    prisma
   }
 });
 
