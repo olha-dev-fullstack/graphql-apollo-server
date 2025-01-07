@@ -101,8 +101,7 @@ export const authResolvers = {
         {
           userId: user.id,
         },
-        //@ts-ignore
-        JSON_SIGNATURE,
+        JSON_SIGNATURE!,
         {
           expiresIn: 3600000,
         }
@@ -140,8 +139,7 @@ export const authResolvers = {
 
     return {
       userErrors: [],
-      //@ts-ignore
-      token: JWT.sign({ userId: user.id }, JSON_SIGNATURE, {
+      token: JWT.sign({ userId: user.id }, JSON_SIGNATURE!, {
         expiresIn: 3600000,
       }),
     };
