@@ -102,7 +102,7 @@ export const typeDefs = gql`
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/olha-dev-fullstack/graphql-blog-app.git
    ```
 2. **Install dependencies:**
    ```bash
