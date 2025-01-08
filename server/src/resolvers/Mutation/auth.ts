@@ -52,6 +52,23 @@ export const authResolvers = {
       };
     }
 
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if(existingUser) {
+      return {
+        userErrors: [
+          {
+            message: "Email already in use",
+          },
+        ],
+        token: null,
+      };
+    }
+
     const isValidPassword = validator.isLength(password, {
       min: 5,
     });
